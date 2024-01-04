@@ -133,6 +133,8 @@ Total Patterns = 2*2*2
 Following is the way to convert bit stream to decimal value:
 
 <img width="682" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-03%20125647.png"> 
+
+
 Following are some important points to be remembered:
 
 <img width="682" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-03%20125826.png"> 
@@ -174,7 +176,7 @@ Following is the output of the above program:
 
 # DAY2: Introduction to ABI and basic verification flow
 <details>
-  <summary>Application Binary Interface:
+  <summary>Application Binary Interface
 </summary>
 
 
@@ -226,6 +228,54 @@ Where sd is store doubleword, x8 is data register rs2,8 is offset ‘imm’ and 
 
 <img src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-03%20154600.png" width="682"> 
 
+</details>
+
+<details>
+  <summary>Study new Algorithm for sum 1 to N using ASM</summary>
+
+  Algorithm for C program of finding sum of 1 to N numbers using ASM woul be;
+
+  <img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20133809.png">
+</details>
+
+<details>
+  <summary>Review ASM Function call</summary>
+  
+  Modified code for finding the Sum of 1 to 9 is as follows:
+
+  ```
+  #include <stdio.h>
+
+  extern int load(int x, int y)
+
+  int main(){
+              int result = 0;
+              int count = 9;
+              result = load(0x0, count+1);
+              printf("Sum of numbers 0 to %d is %d ", count, result);
+  }
+  ```
+
+<img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20142103.png">
+</details>
+
+<details>
+  <summary>Lab to run C program on RISC V CPU</summary>
+  
+   - Here we will run the C program on RISC V CPU which is written in verilog.
+
+  
+  - For it we will convert the C program to a Hex format file and store it in memory.
+
+
+ - Then that Hex format file is given to RISC V CPU.
+
+
+ - And the CPU will display the sum of numbers from 1 to N.
+
+  <img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20155303.png">
+
+  <img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20155745.png">
 </details>
 
 
