@@ -109,6 +109,22 @@ If we were try to figure out number of instructions, it turns out to be
 
 (101b0 - 10184) / 4 = 15 instructions
 
+For compilation of the program use the following command
+```
+     riscv64-unknown-elf-gcc -Ofast -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c
+```
+To view the output use spike simulator as follows
+```
+spike pk <filename.o>
+```
+After compilation we get
+<img width="682" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/296809297-575e2af3-1589-4a36-b5f0-8703b5defdc7.png">
+
+For debugging use the following command
+```
+spike -d pk <filename.o>
+```
+
 
 </details>
 
