@@ -118,12 +118,15 @@ To view the output use spike simulator as follows
 spike pk <filename.o>
 ```
 After compilation we get
+
+
 <img width="682" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/296809297-575e2af3-1589-4a36-b5f0-8703b5defdc7.png">
 
 For debugging use the following command
 ```
 spike -d pk <filename.o>
 ```
+<img width="682" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/294423706-056af35f-8823-46c1-90db-feee7e3b7fef.png">
 
 
 </details>
@@ -292,6 +295,55 @@ Where sd is store doubleword, x8 is data register rs2,8 is offset ‘imm’ and 
   <img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20155303.png">
 
   <img width="684" src="https://github.com/Tanmay315/somaiya-riscv/blob/main/Screenshot%202024-01-04%20155745.png">
+
+  We start by implementing the following C and assembly code with risc-v compiler.
+
+  We execute the code using RISC-V Spike simulator.
+
+  For compilation we use the following command:
+  ```
+  riscv64-unknown-elf-gcc -o1 -mabi=lp64 -march=rv64i -o <filename.o> <filename.c> <assembly_filename.S>
+  ```
+To get output using RISC-V Spike Simulator, the command used is:
+
+```
+spike pk <filename.o>
+```
+
+```
+#include <stdio.h>
+
+extern int load(int x, int y)
+
+int main(){
+  int result = 0;
+  int count = 9;
+  result = load(0x0, count+1);
+  printf("Sum of numbers 0 to %d is %d ", count, result);
+}
+```
+```
+.section .text
+.global load
+.type load, @function
+
+load:
+      add a4, a0, zero
+      add a2, a0, a1
+      add a3, a3, zero
+loop: add a3, a3, a4
+      adddi a3, a3, 1
+      blt a3, a2, loop
+      add a0, a4, zero
+      ret
+```
+
+<img width="682"  src="https://github.com/Tanmay315/somaiya-riscv/blob/main/294405894-61b3ac31-1d2d-4b10-8cc4-ee1cc07995da.png">
+
+<img width="682"  src="https://github.com/Tanmay315/somaiya-riscv/blob/main/294405894-61b3ac31-1d2d-4b10-8cc4-ee1cc07995da.png">
 </details>
+
+# DAY3: Setting up PlatformIO IDE
+
 
 
